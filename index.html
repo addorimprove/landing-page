@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>addorimprove | deterministic vibe coding</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --surface: #0a0a0a;
+            --border: #222;
+            --text: #e5e5e5;
+            --text-dim: #888;
+            --accent: #fff;
+            --mono: 'JetBrains Mono', monospace;
+            --sans: 'Inter', sans-serif;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--sans);
+            line-height: 1.5;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 6rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 2rem;
+        }
+
+        .brand {
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            max-width: 800px;
+        }
+
+        .highlight {
+            color: var(--text-dim);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem 2rem;
+        }
+
+        section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        h2 {
+            font-family: var(--mono);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-dim);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .item-header {
+            font-weight: 500;
+            font-size: 1.1rem;
+            color: var(--accent);
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .item-desc {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.4;
+            max-width: 40ch;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--accent);
+        }
+
+        .tag {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        .mono-text {
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        /* Specific Layout Adjustments */
+        .col-span-2 { grid-column: span 2; }
+        @media (max-width: 768px) { .col-span-2 { grid-column: span 1; } }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="brand">addorimprove</div>
+        <h1>making vibe coding <br><span class="highlight">deterministic</span>.</h1>
+    </header>
+
+    <div class="grid">
+        <!-- Column 1: Philosophy -->
+        <section>
+            <h2>Philosophy</h2>
+            
+            <div class="item">
+                <div class="item-header">Deterministic</div>
+                <div class="item-desc">Strict schemas constrain inputs. Zero structural hallucination ensures predictable code generation.</div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Scalable</div>
+                <div class="item-desc">Maintainable code structured for continuous iteration. Evolve from prototype to production easily.</div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Readability ↔ Performance</div>
+                <div class="item-desc">Tunable output control. Toggle between human-readable logic and machine-optimized execution speed.</div>
+            </div>
+        </section>
+
+        <!-- Column 2: Architecture -->
+        <section>
+            <h2>Architecture</h2>
+            
+            <div class="item">
+                <div class="item-header">Hexagonal Pattern</div>
+                <div class="item-desc">Ports & Adapters architecture. Domain logic remains pure and strictly isolated from infrastructure.</div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Inspiration: NestJS</div>
+                <div class="item-desc">Modular, decorator-based organization with robust Dependency Injection for code scalability.</div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Inspiration: Encore.ts</div>
+                <div class="item-desc">Infrastructure as Code primitives with type-safe distributed systems and automatic tracing built-in.</div>
+            </div>
+        </section>
+
+        <!-- Column 3: Deployment -->
+        <section>
+            <h2>Deployment Targets</h2>
+            
+            <div class="item">
+                <div class="item-header">DSL Driven</div>
+                <div class="item-desc">Logic is defined in abstract blueprints. Decoupled from execution, ensuring your rules stay future-proof.</div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Runtime Agnostic</div>
+                <div class="item-desc">Write once, run anywhere. Transpile to Node.js, Rust, or WebAssembly without rewriting logic.</div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">DB-Native Capable</div>
+                <div class="item-desc">Push compute to data. Compile directly to Postgres or SurrealDB for zero-latency execution.</div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
