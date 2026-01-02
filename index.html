@@ -19,19 +19,6 @@
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        html { scroll-behavior: smooth; }
-        
-        html.lenis, html.lenis body { height: auto; }
-        .lenis.lenis-smooth { scroll-behavior: auto !important; }
-        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
-        .lenis.lenis-stopped { overflow: hidden; }
-        .lenis.lenis-scrolling iframe { pointer-events: none; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         body {
             background-color: var(--bg);
             color: var(--text);
@@ -40,7 +27,6 @@
             padding: 4rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
-            animation: fadeIn 0.8s ease-out forwards;
         }
 
         header {
@@ -67,6 +53,32 @@
 
         .highlight {
             color: var(--text-dim);
+        }
+
+        .carousel {
+            display: inline-block;
+            height: 1.1em;
+            overflow: hidden;
+            vertical-align: bottom;
+        }
+
+        .inner-carousel {
+            display: block;
+            animation: slide 10s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+        }
+
+        .inner-carousel span {
+            height: 1.1em;
+            display: block;
+        }
+
+        @keyframes slide {
+            0%, 15% { transform: translateY(0); }
+            20%, 35% { transform: translateY(-1.1em); }
+            40%, 55% { transform: translateY(-2.2em); }
+            60%, 75% { transform: translateY(-3.3em); }
+            80%, 95% { transform: translateY(-4.4em); }
+            100% { transform: translateY(-5.5em); }
         }
 
         .grid {
@@ -138,127 +150,106 @@
 
         /* Specific Layout Adjustments */
         .col-span-2 { grid-column: span 2; }
-        @media (max-width: 768px) { .col-span-2 { grid-column: span 1; } }
-
-        /* Scroll Reveal */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        
+        @media (max-width: 768px) { 
+            .col-span-2 { grid-column: span 1; }
+            
+            body {
+                padding: 2rem 1rem;
+            }
+            
+            header {
+                margin-bottom: 3rem;
+            }
+            
+            h1 {
+                font-size: clamp(1.5rem, 7vw, 2.5rem);
+            }
+            
+            .grid {
+                gap: 2rem 1rem;
+            }
         }
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
     </style>
 </head>
 <body>
     <header>
         <div class="brand">addorimprove</div>
-        <h1>making vibe coding <br><span class="highlight">deterministic</span>.</h1>
+        <h1>making vibe coding 
+            <span class="carousel">
+                <span class="inner-carousel">
+                    <span class="highlight">scalable</span>
+                    <span class="highlight">deterministic</span>
+                    <span class="highlight">language agnostic</span>
+                    <span class="highlight">framework agnostic</span>
+                    <span class="highlight">and many more...</span>
+                    <span class="highlight">scalable</span>
+                </span>
+            </span>
+        </h1>
     </header>
 
     <div class="grid">
         <!-- Column 1: Philosophy -->
-        <section class="reveal">
+        <section>
             <h2>Philosophy</h2>
             
-            <div class="item reveal">
+            <div class="item">
                 <div class="item-header">Deterministic</div>
                 <div class="item-desc">Strict schemas constrain inputs. Zero structural hallucination ensures predictable code generation.</div>
             </div>
 
-            <div class="item reveal">
+            <div class="item">
                 <div class="item-header">Scalable</div>
                 <div class="item-desc">Maintainable code structured for continuous iteration. Evolve from prototype to production easily.</div>
             </div>
 
-            <div class="item reveal">
+            <div class="item">
                 <div class="item-header">Readability ↔ Performance</div>
                 <div class="item-desc">Tunable output control. Toggle between human-readable logic and machine-optimized execution speed.</div>
             </div>
         </section>
 
         <!-- Column 2: Architecture -->
-        <section class="reveal">
+        <section>
             <h2>Architecture</h2>
             
-            <div class="item reveal">
+            <div class="item">
                 <div class="item-header">Hexagonal Pattern</div>
                 <div class="item-desc">Ports & Adapters architecture. Domain logic remains pure and strictly isolated from infrastructure.</div>
             </div>
 
-            <div class="item reveal">
+            <div class="item">
                 <div class="item-header">Inspiration: NestJS</div>
                 <div class="item-desc">Modular, decorator-based organization with robust Dependency Injection for code scalability.</div>
             </div>
 
-            <div class="item reveal">
+            <div class="item">
                 <div class="item-header">Inspiration: Encore.ts</div>
                 <div class="item-desc">Infrastructure as Code primitives with type-safe distributed systems and automatic tracing built-in.</div>
             </div>
         </section>
 
         <!-- Column 3: Deployment -->
-        <section class="reveal">
+        <section>
             <h2>Deployment Targets</h2>
             
-            <div class="item reveal">
+            <div class="item">
                 <div class="item-header">DSL Driven</div>
                 <div class="item-desc">Logic is defined in abstract blueprints. Decoupled from execution, ensuring your rules stay future-proof.</div>
             </div>
 
-            <div class="item reveal">
+            <div class="item">
                 <div class="item-header">Runtime Agnostic</div>
                 <div class="item-desc">Write once, run anywhere. Transpile to Node.js, Rust, or WebAssembly without rewriting logic.</div>
             </div>
 
-            <div class="item reveal">
+            <div class="item">
                 <div class="item-header">DB-Native Capable</div>
                 <div class="item-desc">Push compute to data. Compile directly to Postgres or SurrealDB for zero-latency execution.</div>
             </div>
         </section>
     </div>
-
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script> 
-    <script>
-        const lenis = new Lenis({
-            duration: 0.6,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: 'vertical',
-            gestureDirection: 'vertical',
-            smooth: true,
-            mouseMultiplier: 1,
-            smoothTouch: false,
-            touchMultiplier: 2,
-        });
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-
-        requestAnimationFrame(raf);
-
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target); // Only animate once
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach((el) => {
-            observer.observe(el);
-        });
-    </script>
 </body>
 </html>
