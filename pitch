@@ -1,9 +1,3 @@
-Technical debt and refactoring 
+Developers has to breakdown the problem and then implement. Implementation takes all the toll. 
 
-
-Technical debt
-Decision making
-refactoring
-debugging/testing
-
-
+With Addorimprove, developer ideally has to only work on breaking down the problem to interfaces.
