@@ -19,6 +19,8 @@
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
+        html, body { overflow-x: hidden; }
+
         body {
             background-color: var(--bg);
             color: var(--text);
@@ -55,11 +57,16 @@
             color: var(--text-dim);
         }
 
+        :root {
+            --carousel-row: 1.2em;
+        }
+
         .carousel {
             display: inline-block;
-            height: 1.1em;
+            height: var(--carousel-row);
             overflow: hidden;
             vertical-align: bottom;
+            line-height: var(--carousel-row);
         }
 
         .inner-carousel {
@@ -68,17 +75,19 @@
         }
 
         .inner-carousel span {
-            height: 1.1em;
+            height: var(--carousel-row);
+            line-height: var(--carousel-row);
             display: block;
+            white-space: nowrap;
         }
 
         @keyframes slide {
             0%, 15% { transform: translateY(0); }
-            20%, 35% { transform: translateY(-1.1em); }
-            40%, 55% { transform: translateY(-2.2em); }
-            60%, 75% { transform: translateY(-3.3em); }
-            80%, 95% { transform: translateY(-4.4em); }
-            100% { transform: translateY(-5.5em); }
+            20%, 35% { transform: translateY(calc(-1 * var(--carousel-row))); }
+            40%, 55% { transform: translateY(calc(-2 * var(--carousel-row))); }
+            60%, 75% { transform: translateY(calc(-3 * var(--carousel-row))); }
+            80%, 95% { transform: translateY(calc(-4 * var(--carousel-row))); }
+            100% { transform: translateY(calc(-5 * var(--carousel-row))); }
         }
 
         .grid {
@@ -183,7 +192,7 @@
                     <span class="highlight">deterministic</span>
                     <span class="highlight">language agnostic</span>
                     <span class="highlight">framework agnostic</span>
-                    <span class="highlight">inevitable</span>
+                    <span class="highlight">and many more...</span>
                     <span class="highlight">scalable</span>
                 </span>
             </span>
