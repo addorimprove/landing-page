@@ -1,264 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>addorimprove | deterministic vibe coding</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "uxx5009eaz");
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        :root {
-            --bg: #050505;
-            --surface: #0a0a0a;
-            --border: #222;
-            --text: #e5e5e5;
-            --text-dim: #888;
-            --accent: #fff;
-            --mono: 'JetBrains Mono', monospace;
-            --sans: 'Inter', sans-serif;
-        }
-        
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+      :root {
+        --bg: #050505;
+        --surface: #0a0a0a;
+        --border: #222;
+        --text: #e5e5e5;
+        --text-dim: #888;
+        --accent: #fff;
+        --mono: "JetBrains Mono", monospace;
+        --sans: "Inter", sans-serif;
+      }
 
-        html, body { overflow-x: hidden; }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        overflow-x: hidden;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: var(--sans);
+        line-height: 1.5;
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      header {
+        margin-bottom: 6rem;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 2rem;
+      }
+
+      .brand {
+        font-family: var(--mono);
+        font-size: 0.85rem;
+        color: var(--text-dim);
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.02em;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 600;
+        letter-spacing: -0.04em;
+        line-height: 1.1;
+        max-width: 800px;
+      }
+
+      .highlight {
+        color: var(--text-dim);
+      }
+
+      :root {
+        --carousel-row: 1.2em;
+      }
+
+      .carousel {
+        display: inline-block;
+        height: var(--carousel-row);
+        overflow: hidden;
+        vertical-align: bottom;
+        line-height: var(--carousel-row);
+      }
+
+      .inner-carousel {
+        display: block;
+        animation: slide 10s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+      }
+
+      .inner-carousel span {
+        height: var(--carousel-row);
+        line-height: var(--carousel-row);
+        display: block;
+        white-space: nowrap;
+      }
+
+      @keyframes slide {
+        0%,
+        15% {
+          transform: translateY(0);
+        }
+        20%,
+        35% {
+          transform: translateY(calc(-1 * var(--carousel-row)));
+        }
+        40%,
+        55% {
+          transform: translateY(calc(-2 * var(--carousel-row)));
+        }
+        60%,
+        75% {
+          transform: translateY(calc(-3 * var(--carousel-row)));
+        }
+        80%,
+        95% {
+          transform: translateY(calc(-4 * var(--carousel-row)));
+        }
+        100% {
+          transform: translateY(calc(-5 * var(--carousel-row)));
+        }
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 4rem 2rem;
+      }
+
+      section {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      h2 {
+        font-family: var(--mono);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-dim);
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      .item-header {
+        font-weight: 500;
+        font-size: 1.1rem;
+        color: var(--accent);
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+      }
+
+      .item-desc {
+        color: var(--text-dim);
+        font-size: 0.95rem;
+        line-height: 1.4;
+        max-width: 40ch;
+      }
+
+      .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        font-family: var(--mono);
+        font-size: 0.8rem;
+        color: var(--accent);
+      }
+
+      .tag {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+      }
+
+      .mono-text {
+        font-family: var(--mono);
+        font-size: 0.85rem;
+        color: var(--text-dim);
+      }
+
+      /* Specific Layout Adjustments */
+      .col-span-2 {
+        grid-column: span 2;
+      }
+
+      @media (max-width: 768px) {
+        .col-span-2 {
+          grid-column: span 1;
+        }
 
         body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: var(--sans);
-            line-height: 1.5;
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+          padding: 2rem 1rem;
         }
 
         header {
-            margin-bottom: 6rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 2rem;
-        }
-
-        .brand {
-            font-family: var(--mono);
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
+          margin-bottom: 3rem;
         }
 
         h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 600;
-            letter-spacing: -0.04em;
-            line-height: 1.1;
-            max-width: 800px;
-        }
-
-        .highlight {
-            color: var(--text-dim);
-        }
-
-        :root {
-            --carousel-row: 1.2em;
-        }
-
-        .carousel {
-            display: inline-block;
-            height: var(--carousel-row);
-            overflow: hidden;
-            vertical-align: bottom;
-            line-height: var(--carousel-row);
-        }
-
-        .inner-carousel {
-            display: block;
-            animation: slide 10s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
-        }
-
-        .inner-carousel span {
-            height: var(--carousel-row);
-            line-height: var(--carousel-row);
-            display: block;
-            white-space: nowrap;
-        }
-
-        @keyframes slide {
-            0%, 15% { transform: translateY(0); }
-            20%, 35% { transform: translateY(calc(-1 * var(--carousel-row))); }
-            40%, 55% { transform: translateY(calc(-2 * var(--carousel-row))); }
-            60%, 75% { transform: translateY(calc(-3 * var(--carousel-row))); }
-            80%, 95% { transform: translateY(calc(-4 * var(--carousel-row))); }
-            100% { transform: translateY(calc(-5 * var(--carousel-row))); }
+          font-size: clamp(1.5rem, 7vw, 2.5rem);
         }
 
         .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 4rem 2rem;
+          gap: 2rem 1rem;
         }
-
-        section {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        h2 {
-            font-family: var(--mono);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-dim);
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .item {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-        }
-
-        .item-header {
-            font-weight: 500;
-            font-size: 1.1rem;
-            color: var(--accent);
-            display: flex;
-            align-items: baseline;
-            gap: 0.5rem;
-        }
-
-        .item-desc {
-            color: var(--text-dim);
-            font-size: 0.95rem;
-            line-height: 1.4;
-            max-width: 40ch;
-        }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            font-family: var(--mono);
-            font-size: 0.8rem;
-            color: var(--accent);
-        }
-
-        .tag {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-        }
-
-        .mono-text {
-            font-family: var(--mono);
-            font-size: 0.85rem;
-            color: var(--text-dim);
-        }
-
-        /* Specific Layout Adjustments */
-        .col-span-2 { grid-column: span 2; }
-        
-        @media (max-width: 768px) { 
-            .col-span-2 { grid-column: span 1; }
-            
-            body {
-                padding: 2rem 1rem;
-            }
-            
-            header {
-                margin-bottom: 3rem;
-            }
-            
-            h1 {
-                font-size: clamp(1.5rem, 7vw, 2.5rem);
-            }
-            
-            .grid {
-                gap: 2rem 1rem;
-            }
-        }
-
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="brand">addorimprove</div>
-        <h1>making vibe coding 
-            <span class="carousel">
-                <span class="inner-carousel">
-                    <span class="highlight">scalable</span>
-                    <span class="highlight">deterministic</span>
-                    <span class="highlight">language agnostic</span>
-                    <span class="highlight">framework agnostic</span>
-                    <span class="highlight">and many more...</span>
-                    <span class="highlight">scalable</span>
-                </span>
-            </span>
-        </h1>
+      <div class="brand">addorimprove</div>
+      <h1>
+        making vibe coding
+        <span class="carousel">
+          <span class="inner-carousel">
+            <span class="highlight">scalable</span>
+            <span class="highlight">deterministic</span>
+            <span class="highlight">language agnostic</span>
+            <span class="highlight">framework agnostic</span>
+            <span class="highlight">and many more...</span>
+            <span class="highlight">scalable</span>
+          </span>
+        </span>
+      </h1>
     </header>
 
     <div class="grid">
-        <!-- Column 1: Philosophy -->
-        <section>
-            <h2>Philosophy</h2>
-            
-            <div class="item">
-                <div class="item-header">Deterministic</div>
-                <div class="item-desc">AI writes code you can trust. Schema in, valid structure out. Every time.</div>
-            </div>
+      <!-- Column 1: Philosophy -->
+      <section>
+        <h2>Philosophy</h2>
 
-            <div class="item">
-                <div class="item-header">Scalable</div>
-                <div class="item-desc">Your first commit isn't technical debt. Architecture baked in from line one.</div>
-            </div>
+        <div class="item">
+          <div class="item-header">Deterministic</div>
+          <div class="item-desc">
+            AI writes code you can trust. Schema in, valid structure out. Every
+            time.
+          </div>
+        </div>
 
-            <div class="item">
-                <div class="item-header">Readability ↔ Performance</div>
-                <div class="item-desc">Debug with clean code, deploy with fast code. Same source, two outputs.</div>
-            </div>
-        </section>
+        <div class="item">
+          <div class="item-header">Scalable</div>
+          <div class="item-desc">
+            Your first commit isn't technical debt. Architecture baked in from
+            line one.
+          </div>
+        </div>
 
-        <!-- Column 2: Architecture -->
-        <section>
-            <h2>Architecture</h2>
-            
-            <div class="item">
-                <div class="item-header">Hexagonal Core</div>
-                <div class="item-desc">Business logic stays untouched. Swap databases, APIs, anything—core doesn't care.</div>
-            </div>
+        <div class="item">
+          <div class="item-header">Readability ↔ Performance</div>
+          <div class="item-desc">
+            Debug with clean code, deploy with fast code. Same source, two
+            outputs.
+          </div>
+        </div>
+      </section>
 
-            <div class="item">
-                <div class="item-header">NestJS DNA</div>
-                <div class="item-desc">Guardrails for generated code. Modules, decorators, injection—structure at scale.</div>
-            </div>
+      <!-- Column 2: Architecture -->
+      <section>
+        <h2>Architecture</h2>
 
-            <div class="item">
-                <div class="item-header">Encore.ts Primitives</div>
-                <div class="item-desc">Infrastructure that types itself. Fewer footguns, faster iteration.</div>
-            </div>
-        </section>
+        <div class="item">
+          <div class="item-header">Hexagonal Core</div>
+          <div class="item-desc">
+            Business logic stays untouched. Swap databases, APIs, anything—core
+            doesn't care.
+          </div>
+        </div>
 
-        <!-- Column 3: Deployment -->
-        <section>
-            <h2>Deployment Targets</h2>
-            
-            <div class="item">
-                <div class="item-header">DSL Driven</div>
-                <div class="item-desc">Your intent survives rewrites. Platform changes, logic doesn't.</div>
-            </div>
+        <div class="item">
+          <div class="item-header">NestJS DNA</div>
+          <div class="item-desc">
+            Guardrails for generated code. Modules, decorators,
+            injection—structure at scale.
+          </div>
+        </div>
 
-            <div class="item">
-                <div class="item-header">Runtime Agnostic</div>
-                <div class="item-desc">Ship to Node today, Rust tomorrow. No rewrite, just retarget.</div>
-            </div>
+        <div class="item">
+          <div class="item-header">Encore.ts Primitives</div>
+          <div class="item-desc">
+            Infrastructure that types itself. Fewer footguns, faster iteration.
+          </div>
+        </div>
+      </section>
 
-            <div class="item">
-                <div class="item-header">DB-Native Capable</div>
-                <div class="item-desc">Run logic where data lives. Skip the network, ship the query.</div>
-            </div>
-        </section>
+      <!-- Column 3: Deployment -->
+      <section>
+        <h2>Deployment Targets</h2>
+
+        <div class="item">
+          <div class="item-header">DSL Driven</div>
+          <div class="item-desc">
+            Your intent survives rewrites. Platform changes, logic doesn't.
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-header">Runtime Agnostic</div>
+          <div class="item-desc">
+            Ship to Node today, Rust tomorrow. No rewrite, just retarget.
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-header">DB-Native Capable</div>
+          <div class="item-desc">
+            Run logic where data lives. Skip the network, ship the query.
+          </div>
+        </div>
+      </section>
     </div>
-</body>
+  </body>
 </html>
